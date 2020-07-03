@@ -1,22 +1,25 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "containerDefenitions": [
+    "containerDefinitions": [
         {
             "name": "mclient",
             "image": "lunohod1/multi-client",
             "hostname": "complex-client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "mserver",
             "image": "lunohod1/multi-server",
             "hostname": "complex-server",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "mworker",
             "image": "lunohod1/multi-worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "mnginx",
@@ -31,7 +34,8 @@
             "links": [
                 "mclient",
                 "mserver"
-            ]
+            ],
+            "memory": 128
         }
     ]
 }
