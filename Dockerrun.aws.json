@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVerision": 2,
+    "containerDefenitions": [
+        {
+            "name": "mclient",
+            "image": "lunohod1/multi-client",
+            "hostname": "complex-client",
+            "essential": false
+        },
+        {
+            "name": "mserver",
+            "image": "lunohod1/multi-server",
+            "hostname": "complex-server",
+            "essential": false
+        },
+        {
+            "name": "mworker",
+            "image": "lunohod1/multi-worker",
+            "essential": false
+        },
+        {
+            "name": "mnginx",
+            "image": "lunohod1/multi-nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "mclient",
+                "mserver"
+            ]
+        }
+    ]
+}
